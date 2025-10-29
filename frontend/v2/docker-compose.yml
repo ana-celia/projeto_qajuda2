@@ -1,0 +1,11 @@
+services:
+    nginx:
+        container_name: qajuda-frontend
+        image: qajuda/frontend-web
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        ports:
+            - "80:80"
+        env_file:
+            - ./compose/.env/.azure
