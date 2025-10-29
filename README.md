@@ -1,3 +1,6 @@
+# Continuidade com fins para práticas da disciplina de Qualidade de Software, sem grandes alterações no projeto original.
+## Todas as informações sobre o desenvolvimento do projeto original abaixo
+
 # QAjuda: plataforma online para trabalho voluntário
 
 <img src="logoqajuda.png" width="300" height="200" />
