@@ -117,7 +117,7 @@ class SolicitacaoVoluntariado(models.Model):
     acao = models.ForeignKey(Acao, on_delete=models.CASCADE)
     colaborador = models.ForeignKey(Colaborador, on_delete=models.CASCADE)
     status = models.CharField(null=True, blank=True,
-                              max_length=9, choices=Status.choices)
+                              max_length=20, choices=Status.choices)
     solicitado_em = models.DateTimeField(auto_now_add=True)
     modificado_em = models.DateTimeField(auto_now=True)
 
