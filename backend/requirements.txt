@@ -12,7 +12,7 @@ inflection==0.5.1
 jsonschema==4.19.2
 jsonschema-specifications==2023.7.1
 packaging==23.1
-Pillow==9.5.0  # ⬅️ MUDAR para versão compatível
+Pillow==10.2.0  
 python-dotenv==1.0.0
 pylint>=2.17.0
 referencing==0.30.2
