@@ -10,7 +10,7 @@ jobs:
   deprecated-check:
     name: Deprecated Code Check
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,16 +20,22 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Pylint
+      - name: Upgrade pip and install tooling
         run: |
-          pip install pylint
+          python -m pip install --upgrade pip
+          pip install pylint pylint-django
 
-      - name: Run strict deprecated code detection
+      - name: Install backend dependencies
         run: |
-          echo "🔍 Checking for deprecated code..."
-          cd backend
-          python -m pylint . --rcfile=.pylintrc --fail-on=deprecated
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
 
+      - name: Run lint (backend)
+        working-directory: backend
+        run: |
+          # use backend/.pylintrc if you keep that file in repo
+          python -m pylint . --rcfile=./.pylintrc --fail-on=deprecated
+  
   backend:
     name: Django Backend
     runs-on: ubuntu-latest

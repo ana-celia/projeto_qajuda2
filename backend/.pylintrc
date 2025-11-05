@@ -1,19 +1,41 @@
-cat > backend/.pylintrc << 'EOF'
 [MASTER]
-extension-pkg-allow-list=drf_spectacular
+ignore=migrations,venv,__pycache__
+load-plugins=pylint_django
+# garante que o package backend seja encontrado pelo pylint quando executado fora do container
+init-hook='import sys; sys.path.insert(0, "backend")'
 
 [MESSAGES CONTROL]
-disable=all
-enable=deprecated-method,
-       deprecated-class,
-       deprecated-module,
-       deprecated-argument,
-       deprecated-decorator
+# desabilite avisos muito ruidosos que não quer bloquear (ajuste conforme necessidade)
+disable=
+    C0114,  # missing-module-docstring
+    C0115,  # missing-class-docstring
+    C0116,  # missing-function-docstring
+    R0903,  # too-few-public-methods
+    W0614,  # unused-wildcard-import
+    W0401,  # wildcard-import
+    C0103   # invalid-name (opcional)
+
+# mas mantenha checagem de deprecated ativada
+enable=
+    deprecated-method,
+    deprecated-class,
+    deprecated-module,
+    deprecated-argument,
+    deprecated-decorator
 
 [REPORTS]
 output-format=text
 reports=no
 
+[FORMAT]
+max-line-length=120
+
 [BASIC]
 good-names=_,pk,id,db
-EOF
+
+[TYPECHECK]
+# lista módulos que às vezes causam falsos positivos se não instalados
+ignored-modules=drf_yasg,rest_framework,rest_framework_simplejwt
+
+[SIMILARITIES]
+min-similarity-lines=4
