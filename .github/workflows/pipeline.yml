@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [dev]
+    branches: ['**']
   pull_request:
-    branches: [dev]
+    branches: ['**']
 
 jobs:
   deprecated-check:
@@ -31,7 +31,7 @@ jobs:
           python -m pylint . --rcfile=.pylintrc --fail-on=deprecated
 
   backend:
-    name: Test Django Backend
+    name: Django Backend
     runs-on: ubuntu-latest
     needs: deprecated-check
     
