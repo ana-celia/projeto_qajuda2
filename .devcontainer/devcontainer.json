@@ -1,9 +1,6 @@
 {
 	"name": "QAjuda Full Stack",
-	"dockerComposeFile": [
-		"../backend/docker-compose.yml",
-		"docker-compose.override.yml"
-	],
+	"dockerComposeFile": "../backend/docker-compose.yml",
 	"service": "django",
 	"workspaceFolder": "/workspace",
 	"customizations": {
@@ -19,6 +16,7 @@
 			],
 			"settings": {
 				"python.linting.enabled": true,
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
 				"editor.formatOnSave": true
 			}
 		}
@@ -30,6 +28,8 @@
 	},
 	"remoteUser": "root",
 	"mounts": [
-		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,readonly"
-	]
+		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind"
+	],
+	"postCreateCommand": "pip install -r requirements.txt"
 }
+
