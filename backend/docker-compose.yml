@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   django:
     container_name: qajuda-api
@@ -15,6 +14,7 @@ services:
       - postgres
     env_file:
       - ./compose/.env
+    platform: linux/amd64
 
   postgres:
     container_name: qajuda-db
@@ -25,6 +25,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    platform: linux/amd64
 
 volumes:
   imagens-api:
