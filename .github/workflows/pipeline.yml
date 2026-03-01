@@ -33,7 +33,6 @@ jobs:
       - name: Run lint (backend)
         working-directory: backend
         run: |
-          # use backend/.pylintrc if you keep that file in repo
           python -m pylint . --rcfile=./.pylintrc --fail-on=deprecated
   
   backend:
